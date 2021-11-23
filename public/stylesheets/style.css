@@ -5,4 +5,44 @@ body {
 }
 
 
+hr { 
+  border:1px solid black;
+}
 
+
+a {
+  text-decoration: none;
+}
+
+button {
+  width: 60px;
+  border-radius: 1rem;
+}
+
+footer {
+  text-align: center;
+  padding-top:10px;
+}
+
+.subcategory > * {
+    display: block;
+    margin: 15px 0;
+
+}
+
+.subcategory > button {
+  width: 100px;
+  height: 40px;
+}
+
+header > * {
+  display: block;
+  margin: 15px 0;
+
+}
+
+.main-category  > * {
+  display: block;
+  margin: 15px 0;
+
+}

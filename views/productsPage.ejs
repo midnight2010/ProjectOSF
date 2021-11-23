@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./partials/head.ejs') %>
+<body>
+    <%- include('./partials/header.ejs')%>
+    
+    <main class='card-container'> 
+     <% products.forEach(product => { %>
+      <section class='card-preview'>
+        <h1><%= product.name   %></h1>
+        <div class='mix-container'>
+            <% let link = product.image_groups.find(element => element.view_type == 'small').images[0].link %>
+           <img src='/images/<%=link%>' alt=""/>
+           <div class='card-text-container'>
+              <p><%=product.short_description.slice(0,120)%></p>
+              <div class='card-price'>
+                <p>Price:$ <%=product.price%></p>
+                <button><a href='/products/<%= product.id  %> '>More info</a></button>
+              </div>
+            </div>
+       </div>
+      </section>
+    <% }); %>
+    </main>
+
+
+    <%- include('./partials/footer.ejs') %>
+</body>
+</html>

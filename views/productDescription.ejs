@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./partials/head.ejs') %>
+<body>
+    <%- include('./partials/header.ejs')%>
+    
+    <main class="detail-container">
+    <div class="align">
+     <% product.forEach(item => { %>
+        <% let link = item.image_groups.find(element => element.view_type == 'large').images[0].link %>
+        <img class='img-container' src='/images/<%=link%>' alt=""/>
+    <div class="text-container">
+      <h1 class='header'><%= item.name %></h1>
+      <p class='description'><%= item.short_description %></p>
+      <div class="footer">
+        <button>Buy Now</button>
+        <div class="sub">
+          <p>Price:<%=item.price %></p>
+          <select name="" id="" style="height:25px">
+            <option value="">USD</option>
+          </select> 
+        </div>
+       
+      </div> 
+    </div>
+     <% }) %>
+    </div>
+    </main>
+
+
+
+
+    
+    <%- include('./partials/footer.ejs') %>
+</body>
+
+</html>

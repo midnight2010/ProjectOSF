@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./partials/head.ejs') %>
+
+
+<body>
+    <header>
+        <div id="topnav">
+         <h1>Alibazon</h1>
+         <nav id="menu">
+          <button class='show-cat-btn '><a href="/categories/mens">Mens</a></button>
+          <button class='show-cat-btn '><a href="/categories/womens">Womens</a></button>   
+         </nav>
+        </div>
+        <hr>
+        <ul id="breadcrumb">
+           <li><a href='/'>Home</a></li>
+ <% if (typeof categories == 'undefined') { %>
+     <main style='height:700px'></main>
+  <% } else { %>
+        <%breadcrumbs.forEach(element => { %>
+           <li><a href='/categories/<%=element%>'><%=element.slice(0,1).toUpperCase() + element.slice(1)%></a></li>
+        <%   }) %>   
+       </ul>
+     </header>
+    
+      <div class='main-category'>
+          <h1><%= categories[0].parent_category_id.toUpperCase()%></h1>
+    
+          <p><%= categories[0].page_description%></p>
+    
+        
+      </div>
+     <main>
+          <h1>Subcategories</h1>
+          <% categories.forEach(element => { %>
+           <section style='height:250px'>
+            <div class='subcategory'>
+                <img src='/images/<%= element.image %>' alt="#">
+                <p><%= element.page_description %></p>
+                <%if(breadcrumbs.length == 1) { %>
+                     <button><a href='/categories/<%= breadcrumbs.join('/') + '/' + element.id %>'>View Subcategories</a></button>
+                <% } else { %>
+                    <button><a href='/products/<%= breadcrumbs.join('/') + '/' + element.id %>'>View Products</a></button>
+                <% } %>
+                <hr>
+            </div>
+           </section> 
+           <% }) %>
+    </main>
+    <% } %>
+<%- include('./partials/footer.ejs') %>
+</body>
+
+</html>
