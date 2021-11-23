@@ -4,6 +4,7 @@ const sentry = require('./sentry')
 const axios = require('axios')
 const categoryRoutes = require('./routes/categoryRoutes')
 const getProductsRoute = require('./routes/getProductsRoute')
+const authorizationRoute = require('./routes/authorizationRoute')
 require('dotenv').config()
 //express app
 const app = express();
@@ -21,6 +22,8 @@ app.get('/',(req,res) => {
     res.render('index')
 })
 
+
+app.use('/login',authorizationRoute)
 app.use('/products',getProductsRoute)
 app.use('/categories',categoryRoutes)
 

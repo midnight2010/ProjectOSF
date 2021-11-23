@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./partials/head.ejs') %>
+
+<body>
+    <header>
+        <div id="topnav">
+         <h1>Alibazon</h1>
+         <nav id="menu">
+          <button class='show-cat-btn '><a href="/categories/mens">Mens</a></button>
+          <button class='show-cat-btn '><a href="/categories/womens">Womens</a></button>   
+         </nav>
+        </div>
+        <hr>    
+        <ul id="breadcrumb">
+           <li><a href='/'>Home</a></li> 
+       </ul>
+     </header>
+
+
+    <main style="height: 700px;">
+    <div class="center">
+        <h1>Login</h1>
+        <form method="post" action="/login/auth/signUp">
+          <div class="txt_field">
+            <input type="text" required name="name">
+            <span></span>
+            <label>Username</label>
+          </div>
+          <div class="txt_field">
+            <input type="password" required name="password">
+            <span></span>
+            <label>Password</label>
+          </div>
+          <div class="txt_field">
+            <input type="email" required name="email">
+            <span></span>
+            <label>Email</label>
+          </div>
+          <button type='submit' class="buttonLogin">SignUp</button>
+          <div class="signup_link">
+            Already have an account? <a href="/login">Login</a>
+          </div>
+        </form>
+      </div>
+    </main>
+    <%- include('./partials/footer.ejs') %>
+</body>
+</html>

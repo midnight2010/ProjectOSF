@@ -3,12 +3,13 @@
   flex-direction: row;
   width: 30%;
   justify-content: space-evenly;
-  align-items: center;
+  align-items: flex-end;
   
 }
 
 
 #topnav {
+    height: 110px;
     background-color:white;
     /* overflow: hidden; */
     display:flex;
@@ -18,6 +19,11 @@
     padding-top:20px;
     margin: 15px 0 0 0;
     justify-content: space-between;
+  }
+
+  #topnav h1 {
+    display: flex;
+    align-items: flex-end;
   }
   
   /* Style the links inside the navigation bar */
