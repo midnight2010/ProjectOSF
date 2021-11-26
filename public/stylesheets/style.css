@@ -1,9 +1,12 @@
 body {
-  
+  width: 100%;
   padding: 0 200px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+h1 {
+  font-size: 25px;
+}
 
 hr { 
   border:1px solid black;
@@ -17,11 +20,6 @@ a {
 button {
   width: 60px;
   border-radius: 1rem;
-}
-
-.signBtn {
-  position: absolute;
-  right:17%;
 }
 
 footer {

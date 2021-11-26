@@ -1,18 +1,32 @@
 <header>
-    <div id="topnav">
-     <h1>Alibazon</h1>
-     
-     <a href="/login"><button class="show-cat-btn signBtn">Sign In</button></a>
-     <nav id="menu">
-      <button class='show-cat-btn '><a href="/categories/mens">Mens</a></button>
-      <button class='show-cat-btn '><a href="/categories/womens">Womens</a></button>   
-     </nav>
-    </div>
-    <hr>
-    <ul id="breadcrumb">
-       <li><a href='/'>Home</a></li>
-    <%breadcrumbs.forEach(element => { %>
-       <li><a href='/categories/<%=element%>'><%=element.slice(0,1).toUpperCase() + element.slice(1)%></a></li>
-    <%   }) %>   
-   </ul>
- </header>
+   
+  <nav id="menu">
+   <div class='box'>
+    <h1>Alibazon</h1>
+    <a href="/categories/mens"><button class='show-cat-btn '>Mens</button></a>
+    <a href="/categories/womens"><button class='show-cat-btn '>Womens</button></a>
+    <a href="/login"><button class="show-cat-btn">Sign In</button></a>
+    <%if (process.env.JWT !== undefined) { %>
+      <a href=""><button class='show-cat-btn'>SignOut</button></a>
+      <a href=""><button class='show-cat-btn'>Profile</button></a>
+      <a href=""><button class='show-cat-btn'>Cart</button></a>
+      <a href=""><button class='show-cat-btn'>Wish List</button></a>
+      <% } %>
+   </div>
+   <div class="container-1">
+      <form method='get' action="/products/search">
+       <input type='text' id='search' placeholder='Search' name='search' required>
+       <button type='submit' class='show-cat-btn'>Find</button> 
+      </form>
+   </div>
+  </nav>
+   
+   <hr>
+   <ul id="breadcrumb">
+      <li><a href='/'>Home</a></li>
+ <% if (typeof(breadcrumbs) !== 'undefined') {  %>
+   <%breadcrumbs.forEach(element => { %>
+      <li><a href='/categories/<%=element%>'><%=element.slice(0,1).toUpperCase() + element.slice(1)%></a></li>
+   <%   })}%>   
+  </ul>
+</header>

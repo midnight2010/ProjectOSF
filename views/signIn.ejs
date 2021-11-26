@@ -3,19 +3,7 @@
     <%- include('./partials/head.ejs') %>
 
 <body>
-    <header>
-        <div id="topnav">
-         <h1>Alibazon</h1>
-         <nav id="menu">
-          <button class='show-cat-btn '><a href="/categories/mens">Mens</a></button>
-          <button class='show-cat-btn '><a href="/categories/womens">Womens</a></button>   
-         </nav>
-        </div>
-        <hr>    
-        <ul id="breadcrumb">
-           <li><a href='/'>Home</a></li> 
-       </ul>
-     </header>
+  <%- include('./partials/header.ejs') %>
 
 
     <main style="height: 700px;">
@@ -23,12 +11,12 @@
         <h1>Login</h1>
         <form method="post" action="/login/auth/signIn">
           <div class="txt_field">
-            <input type="text" required>
+            <input type="email" required name="email">
             <span></span>
-            <label>Username</label>
+            <label>Email</label>
           </div>
           <div class="txt_field">
-            <input type="password" required>
+            <input type="password" required name="password"> 
             <span></span>
             <label>Password</label>
           </div>
