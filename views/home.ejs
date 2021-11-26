@@ -5,15 +5,23 @@
 
 
 <body>
-   <%- include('./partials/header.ejs') %>
+    <%- include('./partials/header.ejs') %>
+    <ul id="breadcrumb">
+        <li><a href='/'>Home</a></li>
+   <% if (typeof(breadcrumbs) !== 'undefined') {  %>
+    <%for(let [key,value] of Object.entries(breadcrumbs)) { %>
+        <li><a href='/categories<%=value%>'><%=key%></a></li>
+     <%   }}%>   
+    </ul>
+  </header>
+   
    <% if(typeof(categories) == 'undefined') { %>
     <main style='height:700px'></main>
     <% } else { %>
       <div class='main-category'>
-        <% let item = categories.find(elem => elem )
-          <h1><%= categories[0].parent_category_id.toUpperCase()%></h1>
+          <h1><%= info.name%></h1>
     
-          <p><%= categories[0].page_description%></p>
+          <p><%= info.page_description%></p>
     
       </div>
      <main>
@@ -23,20 +31,14 @@
             <div class='subcategory'>
                 <img src='/images/<%= element.image %>' alt="#">
                 <p><%= element.page_description %></p>
-             <% if(typeof(breadcrumbs) !== 'undefined') { %>
-                <%if(breadcrumbs.length == 1) { %>
-                     <button><a href='/categories/<%= breadcrumbs.join('/') + '/' + element.id %>'>View Subcategories</a></button>
-                <% } else { %>
-                    <button><a href='/products/<%= breadcrumbs.join('/') + '/' + element.id %>'>View Products</a></button>
-                <% } %>
-             <% } %>
-                <hr>
+            <%let arr = Object.values(breadcrumbs)%>
+            <a href='/categories<%= arr[arr.length - 1] + '/' + element.id %>'><button>View Products</button></a>
+             <hr>
             </div>
            </section> 
            <% }) %>
     </main>
   <% } %>
 <%- include('./partials/footer.ejs') %>
-
 </body>
 </html>

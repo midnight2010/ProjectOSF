@@ -2,7 +2,15 @@
 <html lang="en">
     <%- include('./partials/head.ejs') %>
 <body>
-    <%- include('./partials/header.ejs')%>
+  <%- include('./partials/header.ejs') %>
+  <ul id="breadcrumb">
+      <li><a href='/'>Home</a></li>
+ <% if (typeof(breadcrumbs) !== 'undefined') {  %>
+   <%for(let [key,value] of Object.entries(breadcrumbs)) { %>
+      <li><a href='/categories<%=value%>'><%=key%></a></li>
+   <%   }}%>   
+  </ul>
+</header>
     
     <main class='card-container'> 
      <% products.forEach(product => { %>

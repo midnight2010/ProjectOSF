@@ -3,7 +3,15 @@
     <%- include('./partials/head.ejs') %>
 <body>
     <%- include('./partials/header.ejs')%>
-    
+   
+    <ul id="breadcrumb">
+        <li><a href='/'>Home</a></li>
+   <% if (typeof(breadcrumbs) !== 'undefined') {  %>
+     <% for(let [key,value] of Object.entries(breadcrumbs)) { %>
+        <li><a href='/<%- id == key ? 'products' : 'categories'%><%=value%>'><%=key%></a></li>
+     <%  }}%>   
+    </ul>
+  </header>
     <main class="detail-container">
     <div class="align">
      <% product.forEach(item => { %>
