@@ -3,15 +3,16 @@
   <nav id="menu">
    <div class='box'>
     <h1>Alibazon</h1>
-    <a href="/categories/mens"><button class='show-cat-btn'>Mens</button></a>
-    <a href="/categories/womens"><button class='show-cat-btn '>Womens</button></a>
+    <a href="/categories/mens" class='links'><button class='show-cat-btn btn2'>Mens</button></a>
+    <a href="/categories/womens" class='links'><button class='show-cat-btn btn2'>Womens</button></a>
+    <%if(!user) { %>
     <a href="/login"><button class="show-cat-btn">Sign In</button></a>
-    <%if (process.env.JWT !== undefined) { %>
-      <a href=""><button class='show-cat-btn'>SignOut</button></a>
-      <a href=""><button class='show-cat-btn'>Profile</button></a>
-      <a href=""><button class='show-cat-btn'>Cart</button></a>
-      <a href=""><button class='show-cat-btn'>Wish List</button></a>
-      <% } %>
+    <% } else { %>
+      <a href="/login/signOut"><button class='show-cat-btn'>Logout</button></a>
+      <a href="/logged/profile"><button class='show-cat-btn'>Profile</button></a>
+      <a href="/logged/cart"><button class='show-cat-btn'>Cart</button></a>
+      <a href="/logged/wishlist"><button class='show-cat-btn'>Wish List</button></a>
+   <% } %>
    </div>
    <div class="container-1">
       <form method='get' action="/products/search">

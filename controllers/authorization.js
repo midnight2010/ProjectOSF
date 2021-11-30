@@ -1,31 +1,31 @@
 const axios = require('axios');
-const config = require('config');
+
 
 function authorization(req,res) {
     if(req.params.sign == 'signIn') {
-       
         axios.post(`${process.env.URL}/auth/signin`,{
             secretKey:process.env.SECRET_KEY,
             email:req.body.email,
             password:req.body.password})
-            .then(result =>
-                {
-                console.log(result.data)
-                config.email = result.user.email;
-                config.pass = result.user.password;
-                config.JWT = result.token;
-                res.redirect('/home')
-                } )
-            .catch(err => console.log(err)) 
+            .then( result => {
+                let user = result.data.user;
+                req.session.user = {};
+                req.session.user.secret = result.data.token;
+                req.session.user.name = user.name;
+                req.session.user.email = user.email;
+                req.session.user.password = user.password;
+                req.session.user.joined = user.createdAt;              
+                res.redirect('/') })
+            .catch(err => res.json()) 
     }
     else {
     axios.post(`${process.env.URL}/auth/signup`,{
     secretKey:process.env.SECRET_KEY,
-    name:req.body.name,
+    name:req.body.name, 
     email:req.body.email,
     password:req.body.password})
-    .then(result => console.log(result.data))
-    .catch(err => console.log(err))   
+    .then(res.redirect('/login'))
+    .catch(err => res.json())   
     }
   
   

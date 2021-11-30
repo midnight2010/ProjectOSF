@@ -16,6 +16,57 @@
    
 }
 
+.wish {
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+    margin: 10px;
+    width: 1600px;
+    height: 100%;
+    border: 1px solid grey;
+    border-radius: 5px;
+    -webkit-box-shadow: 4px 3px 24px -10px rgba(129, 95, 95, 0.56);
+    -moz-box-shadow: 4px 3px 24px -10px rgba(0,0,0,0.56);
+    box-shadow: 4px 3px 24px -10px rgba(0,0,0,0.56);
+}
+
+.wishRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px;
+    width: 50%;
+    height: 300px;
+    border: 1px solid grey;
+    border-radius: 5px;
+    -webkit-box-shadow: 4px 3px 24px -10px rgba(129, 95, 95, 0.56);
+    -moz-box-shadow: 4px 3px 24px -10px rgba(0,0,0,0.56);
+    box-shadow: 4px 3px 24px -10px rgba(0,0,0,0.56);
+    
+}
+
+.wishCol{
+    width: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+.wishPrice {
+    width: 450px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.wishCol img {
+    width: 200px;
+    height: 200px;
+   
+}
+
+
 .card-preview {
     margin: 25px;
     padding: 1rem;
@@ -36,38 +87,7 @@
     height: 100px;
 }
 
-.card-preview-big {
-    margin: 40px 0;
-    padding: 1rem;
-    /* border: 2px solid black; */
-    width: 70%;
-    height: 500px;
-    display: flex;
-    flex-direction: column;
-    border: 1px solid #e6e6fa;
-    border-radius: 5px;
-    -webkit-box-shadow: 4px 3px 24px -10px rgba(0,0,0,0.56);
-    -moz-box-shadow: 4px 3px 24px -10px rgba(0,0,0,0.56);
-    box-shadow: 4px 3px 24px -10px rgba(0,0,0,0.56);
-    
-}
-.pdp-recomendations-container{
-    margin: 40px 0;
-    padding: 1rem; 
-    height: 500px;
-    width: 28%;
-    display: flex;
-    flex-direction: column;
-    border: 1px solid #e6e6fa;
-    border-radius: 5px;
-    -webkit-box-shadow: 4px 3px 24px -10px rgba(0,0,0,0.56);
-    -moz-box-shadow: 4px 3px 24px -10px rgba(0,0,0,0.56);
-    box-shadow: 4px 3px 24px -10px rgba(0,0,0,0.56);   
-}
 
-.text-header{
-    
-}
 .card-preview>a{
     text-decoration: none;
     font-size: 1.3rem;
@@ -98,6 +118,10 @@
     object-fit: contain;
 
 }
+
+.mix-container > * {
+    padding: 20px;
+}
 .card-text-container{
     display: flex;
     flex-direction: column;
@@ -109,6 +133,12 @@
     
 }
 
+.column {
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 .card-price {
     display: flex;
     flex-direction: row;

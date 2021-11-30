@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./partials/head.ejs') %>
+
+<body>
+    <%- include('./partials/header.ejs') %>
+    <ul id="breadcrumb">
+        <li><a href='/'>Home</a></li>
+  </header>
+<%if(newItems.length == 0) {%> 
+    <main class="cart">
+       <h1 class="empty"><%=msg%></h1> 
+    </main> 
+<% } else { %>
+<main class='wish'>
+  <%newItems.forEach(element => { %>  
+    <p class="hidden" id='<%=element.productId%>'><%=element.variant.product_id%></p> 
+    <section class="wishRow"> 
+        <div class="wishCol">
+          <h1><%= element.name  %></h1>
+          <img src='/images/<%=element.link%>' alt=""/>
+        </div>
+        <div class="wishCol">
+            <div >
+             <h1>Description</h1>
+             <p class="description"><%=element.page_description%></p>  
+            </div>
+            <div class="wishPrice">
+                <p>Price:<%=element.variant.price%>$</p>
+                <div>
+                 <h5 style="display: inline-block;">Qty:</h5>
+                 <input class="qty-2"type="number" name="quantity" min="1" max="5" value=<%=element.quantity%>>      
+                </div> 
+                <form action="/logged/removeCartItem" method="POST">
+                <input type="text" name='productId' value='<%=element.productI%>' style="visibility:hidden">
+                <input type="text" name='variantId' value='<%=element.variant.product_id%>' style="visibility:hidden">
+                <button type="submit" class="show-cat-btn remove">Remove</button>
+              </form> 
+           </div>
+        </div>    
+  </section>
+ <%   }); %>
+</main>
+<% } %>
+<%- include('./partials/footer.ejs') %>
+<script>
+let main = document.querySelector('.wish')
+let btns = main.querySelectorAll('.remove');
+
+for(let i = 0; i < btns.length; i++) {
+ btns[i].addEventListener('click',(e)=> {
+ let div = btns[i].parentElement;
+ let div2 = div.parentElement;
+ let div3 = div2.parentElement;
+ let section = div3.parentElement;
+ section.remove()
+ }) 
+}
+</script>
+</body>
+</html>

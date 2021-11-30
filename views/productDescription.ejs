@@ -12,34 +12,80 @@
      <%  }}%>   
     </ul>
   </header>
-    <main class="detail-container">
+
+   <main class="detail-container">
+    <div class="message" style="display: none;"></div>
     <div class="align">
      <% product.forEach(item => { %>
-        <% let link = item.image_groups.find(element => element.view_type == 'large').images[0].link %>
+      <% let link = item.image_groups.find(element => element.view_type == 'large').images[0].link %>
         <img class='img-container' src='/images/<%=link%>' alt=""/>
-    <div class="text-container">
-      <h1 class='header'><%= item.name %></h1>
-      <p class='description'><%= item.short_description %></p>
+        <section class="text-container">
+          <h1 class='header'><%= item.name %></h1>
+          <p class='description'><%= item.short_description %></p>
+          <div class="preferences">
+          <label for="quantity">Qty:</label>
+          <input type="number" id="qty" name="quantity" min="1" max="5" placeholder="1">
+      <%if(variants.length > 0) {%>
+          <label for="size">Size:</label>
+          <select name="size" id="size">
+          <% variants.forEach(size => {%>
+            <option value=<%=size.product_id%>><%=size.variation_values?.size ? size.variation_values?.size : size.variation_values?.accessorySize%></option>
+          <% }) %>
+          </select>
+      <% } %>
+        </div>
+     
       <div class="footer">
-        <button>Buy Now</button>
+        <div>
+          <button class='add' name="cart">Add to Cart</button>
+          <button class='add' name="wish">Add to Wish</button> 
+        </div>
+        <p class="hidden"><%=id%></p>
         <div class="sub">
           <p>Price:<%=item.price %></p>
           <select name="" id="" style="height:25px">
             <option value="">USD</option>
           </select> 
         </div>
-       
       </div> 
-    </div>
-     <% }) %>
-    </div>
-    </main>
-
-
-
-
+       </section>
+        <% }) %>
+      </div>
+    </main> 
     
     <%- include('./partials/footer.ejs') %>
+    <script>
+        let select = document.querySelector('#size');
+        let footer = document.querySelector('.footer');
+        let btns = footer.getElementsByClassName('add');
+     for(let i = 0;i<btns.length;i++) {
+       btns[i].addEventListener('click',(e)=>{
+          let id =  footer.querySelector('.hidden').textContent;
+          let input = document.getElementById('qty');
+          let variantId = select.value ? select.value : "";
+        axios.post(`/logged/${btns[i].name == "wish" ? 'addWish' : 'addCartItem'}`,{
+          id:Number(id),
+          qty:input.value || '1',
+          variant:variantId,
+        })  
+        .then(result => {
+          let mes = document.querySelector('.message');
+          mes.textContent =  result.data;
+          mes.style.transition = 'display 2s ease-in-out';
+          mes.style.display = 'block';
+          mes.classList.add('error');
+          setTimeout(()=> {
+          mes.classList.remove('error');
+          mes.textContent = '';
+          mes.style.display = 'none';
+          },2000) 
+          
+        })  
+          .catch(err => console.log(err)) 
+        
+      })
+     }
+    </script>
+    
 </body>
-
 </html>

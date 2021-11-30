@@ -14,12 +14,12 @@
      <%   }}%>   
     </ul>
   </header>
-   
+  <div class="container">
    <% if(typeof(categories) == 'undefined') { %>
-    <main style='height:700px'></main>
+    <main style='height:700px'></main> 
     <% } else { %>
       <div class='main-category'>
-          <h1><%= info.name%></h1>
+          <h1 class='activ'><%= info.name%></h1>
     
           <p><%= info.page_description%></p>
     
@@ -39,6 +39,9 @@
            <% }) %>
     </main>
   <% } %>
+</div>
+  
 <%- include('./partials/footer.ejs') %>
+<script src="/javascripts/active-button.js"></script>
 </body>
 </html>

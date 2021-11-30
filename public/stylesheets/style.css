@@ -4,6 +4,10 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+main {
+  padding: 10px;
+  margin: 15px;
+}
 h1 {
   font-size: 25px;
 }
@@ -33,6 +37,10 @@ footer {
 
 }
 
+.test {
+  display: none;
+}
+
 .subcategory > button {
   width: 100px;
   height: 40px;
@@ -48,4 +56,198 @@ header > * {
   display: block;
   margin: 15px 0;
 
+}
+
+
+.container-2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 700px;
+  margin-left: 40px;
+  font-size: 20px;
+  font-style: italic;
+  line-height: 2rem;
+
+}
+
+.container-2 .icons {
+  display: flex;
+  flex-direction: row;
+}
+
+.container-2 .icons > * {
+  padding: 25px;
+  width: 200px;
+  height: 200px;
+}
+
+#fa-shopping-cart > p{
+  text-align: center;
+  background-color: gray;
+  width: 30px;
+  height: 30px;
+  border-radius: 60%;
+  position: relative;
+  left: 30%;
+  bottom: 25px;
+
+}
+
+.cart {
+  padding:15px;
+  height: 800px;
+  border: 1px solid grey;
+  border-radius: 10px;
+  -webkit-box-shadow: 4px 3px 24px -10px rgba(129, 95, 95, 0.56);
+    -moz-box-shadow: 4px 3px 24px -10px rgba(0,0,0,0.56);
+    box-shadow: 4px 3px 24px -10px rgba(0,0,0,0.56);
+}
+
+#fa-gift > p {
+  text-align: center;
+  background-color: gray;
+  width: 30px;
+  height: 30px;
+  border-radius: 60%;
+  position: relative;
+  left: 30%;
+  bottom: 25px;
+}
+
+
+.preferences {
+  display: flex;
+  position: relative;
+  right:33%;
+  font-style: oblique;
+  font-weight: bolder;
+  font-size: 20px;
+  text-align: center;
+
+}
+
+.preferences > * {
+  margin-right: 10px;
+}
+
+.preferences select,input {
+  text-align: center;
+  width: 50px;
+  height: 25px;
+}
+
+.error {
+  background-color: white;
+  font-size: 20px;
+  font-weight: bold;
+  font-style: italic;
+  color:black;
+}
+
+.msg {
+  height: 700px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.empty {
+  position: relative;
+  top:50%;
+  left:40%;
+  font-size: 30px;
+  font-style: italic;
+}
+
+.hidden {
+  display: none;
+}
+
+.more {
+  position: relative;
+  top: 200px;
+  height: 70px;
+  width: 100px;
+  font-size: 20px;
+  border-color:blue;
+  color:blue ;
+}
+
+.container-3 {
+  width: 70%;
+  border: 1px solid black;
+  border-radius: 20px;
+  padding: 10px;
+  margin: 10px;
+}
+
+.col {
+  width: 100px;
+  display: flex;
+  flex-direction: column;
+  
+  
+}
+
+.price-1::after{
+  content: '$';
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content:space-around; 
+}
+
+.row > form {
+  width: 50px;
+ 
+}
+
+.finalPurchase {
+  display: flex;
+  border-radius: 15px;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: grey;
+  opacity: 70%;
+  border: 1px solid grey;
+  width: 200px;
+  height: 150px;
+  position: absolute;
+  top: 20%;
+  left:70%;
+
+}
+
+details {
+  width: 700px;
+  margin-top:10px;
+}
+.details {
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.spacing {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.spacing > * {
+  padding: 10px;
+  margin:10px;
+}
+.absoluteBottom {
+  position: relative;
+  bottom: 10px;
+  
 }

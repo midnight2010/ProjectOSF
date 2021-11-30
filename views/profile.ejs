@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./partials/head.ejs') %>
+
+
+<body>
+    <%- include('./partials/header.ejs') %>
+    <ul id="breadcrumb">
+        <li><a href='/'>Home</a></li>
+    </ul>
+  </header>
+  <main class="container-2">
+     <div>
+      <p>Name:<%=user.name %></p>
+      <p>Email:<%=user.email%></p>
+      <p>Password:<%=user.password%></p>
+      <p>Joined:<%=user.joined.slice(0,10)%> <span><%=user.joined.slice(11,16)%></span></p>
+     </div>
+     <%if (orders != 0 ) { %>
+      <details >
+       <summary>Orders</summary>
+      <%orders.forEach(order => { %>
+       <div class="details">
+         <% let sum = 0; %>
+         <%order.items.forEach(element => { %>
+          <%sum += element.quantity%>
+         <%});%>
+         <div class="spacing">
+         <h6>Quantity : <%=sum%></h6>
+         <h6>UserId: <%=order.userId%></h6>
+         <h6>PaymentId:<%=order.paymentId%></h6>
+         </div>
+        </div>
+      <% }) %>
+     </details>
+     <% } %>
+     <div class="icons">
+      <div id='fa-shopping-cart'>
+        <i class="fas fa-shopping-cart fa-3x"></i>
+            <p><%=lengthCart%></p> 
+      </div>
+      <div id="fa-gift">
+        <i class="fas fa-gift fa-3x"></i>
+        <p><%=lengthWish%></p>
+      </div>
+    </div>
+ </main> 
+
+  <%- include('./partials/footer.ejs') %>
+</body>
+</html>
+

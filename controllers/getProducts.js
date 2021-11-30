@@ -7,7 +7,7 @@ function getProducts(req,res) {
         let breadcrumbs = helper(arr);
         res.render('productsPage',{products:result.data,breadcrumbs})
      })
-    .catch(err => console.log(err))
+    .catch(err => res.json(err))
         
 }
 

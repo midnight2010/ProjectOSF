@@ -11,7 +11,7 @@
    <%   }}%>   
   </ul>
 </header>
-    
+  
     <main class='card-container'> 
      <% products.forEach(product => { %>
       <section class='card-preview'>
@@ -29,9 +29,12 @@
        </div>
       </section>
     <% }); %>
+    <% if(products.length > 5) { %>
+      <button type="button" class="more">More Results</button>
+    <% } %>
     </main>
-
-
+    
     <%- include('./partials/footer.ejs') %>
+    <script src='/javascripts/moreResults.js'></script>
 </body>
 </html>

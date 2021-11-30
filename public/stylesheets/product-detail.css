@@ -1,6 +1,8 @@
 
 
 .detail-container {
+    display: flex;
+    flex-direction: column;
     margin: auto;
     height: 800px;
     max-width: 95%;

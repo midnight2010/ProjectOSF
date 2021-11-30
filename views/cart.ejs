@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./partials/head.ejs') %>
+
+<body>
+    <%- include('./partials/header.ejs') %>
+    <ul id="breadcrumb">
+        <li><a href='/'>Home</a></li>
+  </header>
+<%if(newItems.length == 0) {%> 
+        <main class="cart">
+           <h1 class="empty"><%=msg%></h1> 
+        </main> 
+   <% } else { %>
+    <main class='cart'>
+    <%newItems.forEach(element => { %>   
+    <section class="container-3">
+      <p class="hidden" id='<%=element.productId%>'><%=element.variant.product_id%></p>
+      <div class="row">
+        <div class='col'>
+            <h5><%=element.name%></h5>
+            <img src='/images/<%= element.link %>' alt=""> 
+        </div>
+        <div class='col'>
+            <h5>Description</h5>
+            <p><%=element.page_description%></p>  
+        </div>
+        <div class='col'>
+            <h5>Price</h5>
+            <p class='price-1'><%=element.variant.price%></p>
+        </div>
+        <div class="col">
+         <h5>Quantity</h5>
+         <input class="qty-2"type="number" name="quantity" min="1" max="5" value=<%=element.quantity%>>   
+         </div>
+        <form action="/logged/removeCartItem" method="POST">
+            <input type="text" name='productId' value='<%=element.productI%>' class="hidden">
+            <input type="text" name='variantId' value='<%=element.variant.product_id%>' class="hidden">
+            <button type="submit" class="show-cat-btn remove">Remove</button>
+         </form>
+      </div>    
+  </section>
+ <%  })%>
+ <div class="finalPurchase">
+        <div id="paypal-button-container"></div>
+        <h1>Final Amount:</h1>
+        <h2 class="price"></h2>
+ </div>
+</main>
+ <% } %>
+
+ 
+ 
+
+
+<%- include('./partials/footer.ejs') %>
+<script src="/javascripts/price.js"></script>
+<script src="/javascripts/removeButton.js"></script>
+<script src="https://www.paypal.com/sdk/js?client-id=AdkUg734XoAwU5-GqYmKd3btJ6HHJNYAUhT4A2OhHkXo9MtoJClomevDxxrY3QzmhRJvPqOepxB4Rlb5&disable-funding=card,credit"></script>
+<script>
+    let div = document.querySelector('.finalPurchase');
+    let price = div.querySelector('.price').innerText;
+    let btn = document.querySelector('.purchase');
+    let items ='<%-JSON.stringify(newItems) %>';
+    paypal.Buttons({
+        style: {
+            color:'blue',
+            shape:'pill',
+          },
+        // Sets up the transaction when a payment button is clicked
+            createOrder: function () {
+             return axios.post("/payment", {
+                 items,
+                 price 
+                })
+                .then(result => { 
+                  return result.data
+                })
+                .catch(e =>console.log(e))
+                
+            },
+            onApprove: function (data, actions) {
+            return actions.order.capture().then(details => {
+                console.log(details)
+             axios.post('/payment/createOrder',{
+                items,
+                details
+             })
+             .catch(error => console.log(error))
+            })
+         },
+     }).render('#paypal-button-container');
+
+</script>
+</body>
+</html>
