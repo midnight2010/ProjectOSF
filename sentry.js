@@ -20,12 +20,3 @@ const transaction = Sentry.startTransaction({
   name: "My First Test Transaction",
 });
 
-setTimeout(() => {
-  try {
-    foo();
-  } catch (e) {
-    Sentry.captureException(e);
-  } finally {
-    transaction.finish();
-  }
-}, 99);
