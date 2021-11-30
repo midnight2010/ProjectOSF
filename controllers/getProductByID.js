@@ -6,7 +6,6 @@ function getProductByID(req, res) {
     `${process.env.URL}/products/product_search?id=${id}&secretKey=${process.env.SECRET_KEY}`
   )
     .then((result) => {
-      console.log(result);
       let variants = result.data[0].variants;
       if (variants.length > 0)
         if (variants[0].variation_values?.size) {

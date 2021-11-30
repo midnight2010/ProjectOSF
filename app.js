@@ -12,7 +12,6 @@ const orderRoutes = require("./routes/orderRoutes");
 
 require("dotenv").config();
 
-//paypal
 
 //express app
 const app = express();
