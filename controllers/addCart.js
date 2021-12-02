@@ -15,8 +15,8 @@ function addCartItem(req, res) {
           headers: { Authorization: `Bearer ${req.session.user.secret}` },
         }
       )
-      .then(res.send("Product Added to the cart"))
-      .catch((err) => res.json(err));
+      .then(res.send("Product added to the Cart"))
+      .catch((err) => console.log(err));
   } else {
     res.send("You are not logged in");
   }

@@ -38,6 +38,9 @@ app.use(
 
 app.use(function (req, res, next) {
   res.locals.user = req.session.user;
+  if(res.locals.user) {
+   res.setHeader("Authorization",res.locals.user.secret)
+  }
   next();
 });
 
